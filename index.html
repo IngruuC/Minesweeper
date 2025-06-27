@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper - Proyecto Final</title>
+    <link rel="stylesheet" href="estilos/reset.css">
+    <link rel="stylesheet" href="estilos/estilos-principales.css">
+</head>
+<body>
+    <!-- Modal para ingresar nombre -->
+    <div id="modal-nombre" class="modal">
+        <div class="modal-contenido">
+            <h2>¡Bienvenido al Minesweeper!</h2>
+            <p>Ingresa tu nombre para comenzar:</p>
+            <input type="text" id="input-nombre" placeholder="Mínimo 3 letras" maxlength="20">
+            <div class="error-mensaje" id="error-nombre"></div>
+            <div class="modal-botones">
+                <button id="btn-comenzar">Comenzar Juego</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de fin de juego -->
+    <div id="modal-fin-juego" class="modal oculto">
+        <div class="modal-contenido">
+            <h2 id="titulo-fin-juego"></h2>
+            <p id="mensaje-fin-juego"></p>
+            <div class="modal-botones">
+                <button id="btn-nueva-partida">Nueva Partida</button>
+                <button id="btn-ver-ranking">Ver Ranking</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de ranking -->
+    <div id="modal-ranking" class="modal oculto">
+        <div class="modal-contenido modal-grande">
+            <h2>Ranking de Partidas</h2>
+            <div class="ranking-controles">
+                <button id="btn-ordenar-puntaje" class="activo">Ordenar por Puntaje</button>
+                <button id="btn-ordenar-fecha">Ordenar por Fecha</button>
+            </div>
+            <div id="lista-ranking" class="lista-ranking"></div>
+            <div class="modal-botones">
+                <button id="btn-cerrar-ranking">Cerrar</button>
+            </div>
+        </div>
+    </div>
