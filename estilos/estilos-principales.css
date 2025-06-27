@@ -105,3 +105,30 @@ body.modo-oscuro {
     margin: 0 auto;
     padding: 2rem;
 }
+
+/* Sección del juego */
+.seccion-juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.configuracion-juego {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.selector-dificultad {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.selector-dificultad label {
+    font-weight: bold;
+}
