@@ -210,3 +210,47 @@ body.modo-oscuro {
     width: 640px;
     height: 640px;
 }
+
+/* Celdas del tablero */
+.celda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-tablero);
+    border: 2px outset var(--color-tablero);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.celda:hover {
+    background-color: var(--color-celda-hover);
+    transform: scale(1.02);
+}
+
+.celda.revelada {
+    background-color: var(--color-celda-revelada);
+    border: 1px solid #999;
+    cursor: default;
+    transform: none;
+}
+
+.celda.revelada:hover {
+    transform: none;
+}
+
+.celda.mina {
+    background-color: var(--color-mina);
+    animation: explosion-mina 0.5s ease-in-out;
+}
+
+.celda.bandera {
+    background-color: var(--color-tablero);
+}
+
+.celda.bandera::after {
+    content: '🚩';
+    animation: colocar-bandera 0.3s ease-in-out;
+}
