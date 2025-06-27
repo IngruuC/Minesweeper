@@ -25,3 +25,83 @@ body {
     background-color: var(--color-fondo);
     transition: all 0.3s ease;
 }
+
+/* Modo oscuro */
+body.modo-oscuro {
+    --color-fondo: #1a1a1a;
+    --color-texto: #e0e0e0;
+    --color-blanco: #2d2d2d;
+    --color-tablero: #444;
+    --color-celda-hover: #555;
+    --color-celda-revelada: #555;
+}
+
+/* Navegación */
+.navegacion {
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--sombra-suave);
+}
+
+.nav-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-contenido h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.nav-contenido h1 a {
+    color: var(--color-blanco);
+    text-decoration: none;
+}
+
+.nav-botones {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-botones a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-botones a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-modo {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    color: var(--color-blanco);
+}
+
+.btn-modo:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Contenido principal */
+.contenido-principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
