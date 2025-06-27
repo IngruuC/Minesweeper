@@ -132,3 +132,51 @@ body.modo-oscuro {
 .selector-dificultad label {
     font-weight: bold;
 }
+
+
+/* Panel del juego */
+.panel-juego {
+    background: var(--color-blanco);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--sombra-suave);
+    transition: background-color 0.3s ease;
+}
+
+.info-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: var(--color-fondo);
+    border-radius: 4px;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contador-minas,
+.temporizador {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.btn-cara {
+    background: var(--color-blanco);
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.btn-cara:hover {
+    transform: scale(1.1);
+    box-shadow: var(--sombra-suave);
+}
