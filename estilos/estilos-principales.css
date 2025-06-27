@@ -1,0 +1,27 @@
+/* Estilos principales del Minesweeper con nomenclatura kebab-case */
+
+/* Variables CSS para modo oscuro/claro */
+:root {
+    --color-primario: #3498db;
+    --color-secundario: #2c3e50;
+    --color-fondo: #f4f4f4;
+    --color-texto: #333;
+    --color-blanco: #ffffff;
+    --color-error: #e74c3c;
+    --color-exito: #27ae60;
+    --color-tablero: #c0c0c0;
+    --color-celda-hover: #d0d0d0;
+    --color-celda-revelada: #e0e0e0;
+    --color-mina: #ff0000;
+    --sombra-suave: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --sombra-fuerte: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos base */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    transition: all 0.3s ease;
+}
