@@ -144,3 +144,23 @@ function generarTableroHTML() {
     // Implementar chording después de crear el tablero
     implementarChording();
 }
+function manejarClickIzquierdo(fila, columna) {
+    if (juegoTerminado) return;
+    if (tableroVisible[fila][columna].tieneBandera) return;
+    if (tableroVisible[fila][columna].revelada) return;
+    
+    if (!juegoIniciado) {
+        juegoIniciado = true;
+        generarMinas(fila, columna);
+        iniciarTemporizador();
+    }
+    
+    revelarCelda(fila, columna);
+}
+
+function manejarClickDerecho(fila, columna) {
+    if (juegoTerminado) return;
+    if (tableroVisible[fila][columna].revelada) return;
+    
+    alternarBandera(fila, columna);
+}
