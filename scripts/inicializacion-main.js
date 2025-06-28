@@ -57,3 +57,38 @@ document.addEventListener('DOMContentLoaded', function() {
     configurarEventos();
     mostrarModalNombre();
 });
+
+// Configuración de todos los eventos
+function configurarEventos() {
+    // Eventos del juego
+    btnComenzar.addEventListener('click', iniciarJuego);
+    btnReiniciar.addEventListener('click', reiniciarJuego);
+    btnNuevaPartida.addEventListener('click', nuevaPartida);
+    selectDificultad.addEventListener('change', cambiarDificultad);
+    
+    // Eventos de ranking
+    btnVerRanking.addEventListener('click', mostrarRanking);
+    if (btnVerRankingJuego) {
+        btnVerRankingJuego.addEventListener('click', mostrarRanking);
+    }
+    btnCerrarRanking.addEventListener('click', cerrarRanking);
+    btnOrdenarPuntaje.addEventListener('click', function() { ordenarRanking('puntaje'); });
+    btnOrdenarFecha.addEventListener('click', function() { ordenarRanking('fecha'); });
+    
+    // Eventos de UI
+    btnModoOscuro.addEventListener('click', alternarModoOscuro);
+    
+    // Eventos de teclado
+    inputNombre.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            iniciarJuego();
+        }
+    });
+    
+    document.addEventListener('keypress', function(e) {
+        if (e.key === ' ') {
+            e.preventDefault();
+            reiniciarJuego();
+        }
+    });
+}
