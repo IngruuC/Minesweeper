@@ -240,3 +240,38 @@ function perderJuego() {
         mostrarModalFinJuego('¡Perdiste!', 'Encontraste una mina. ¡Inténtalo de nuevo!');
     }, 1000);
 }
+function verificarVictoria() {
+    var celdasReveladas = 0;
+    var totalCeldasSeguras = filas * columnas - totalMinas;
+    
+    for (var i = 0; i < filas; i++) {
+        for (var j = 0; j < columnas; j++) {
+            if (tableroVisible[i][j].revelada && !tablero[i][j].esMina) {
+                celdasReveladas++;
+            }
+        }
+    }
+    
+    if (celdasReveladas === totalCeldasSeguras) {
+        ganarJuego();
+    }
+}
+
+function ganarJuego() {
+    juegoTerminado = true;
+    btnReiniciar.textContent = '😎';
+    
+    if (temporizador) {
+        clearInterval(temporizador);
+    }
+    
+    var tiempoFinal = Math.floor((Date.now() - tiempoInicio) / 1000);
+    var puntaje = calcularPuntaje(tiempoFinal);
+    
+    guardarPartida(tiempoFinal, puntaje);
+    
+    setTimeout(function() {
+        mostrarModalFinJuego('¡Felicitaciones!', 
+            '¡Ganaste la partida en ' + tiempoFinal + ' segundos! Puntaje: ' + puntaje);
+    }, 500);
+}
