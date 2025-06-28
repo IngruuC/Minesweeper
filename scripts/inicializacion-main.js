@@ -40,3 +40,10 @@ var mensajeFinJuego = document.getElementById('mensaje-fin-juego');
 var btnNuevaPartida = document.getElementById('btn-nueva-partida');
 var btnVerRanking = document.getElementById('btn-ver-ranking');
 var btnVerRankingJuego = document.getElementById('btn-ver-ranking-juego');
+
+// Elementos del DOM - Ranking
+var modalRanking = document.getElementById('modal-ranking');
+var listaRanking = document.getElementById('lista-ranking');
+var btnCerrarRanking = document.getElementById('btn-cerrar-ranking');
+var btnOrdenarPuntaje = document.getElementById('btn-ordenar-puntaje');
+var btnOrdenarFecha = document.getElementById('btn-ordenar-fecha');
