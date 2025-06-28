@@ -695,3 +695,11 @@ button:hover::before {
        transition-duration: 0.01ms !important;
    }
 }
+/* Focus visible para navegación por teclado */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+   outline: 2px solid var(--color-primario);
+   outline-offset: 2px;
+}
