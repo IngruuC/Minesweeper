@@ -60,3 +60,41 @@
             </div>
         </div>
     </nav>
+
+    <!-- Contenido principal -->
+    <main class="contenido-principal">
+        <section id="juego" class="seccion-juego">
+            <div class="configuracion-juego">
+                <div class="selector-dificultad">
+                    <label for="select-dificultad">Dificultad:</label>
+                    <select id="select-dificultad">
+                        <option value="facil">Fácil (8x8 - 10 minas)</option>
+                        <option value="medio">Medio (12x12 - 25 minas)</option>
+                        <option value="dificil">Difícil (16x16 - 40 minas)</option>
+                    </select>
+                </div>
+                <button id="btn-ver-ranking-juego">Ver Ranking</button>
+            </div>
+
+            <div class="panel-juego">
+                <div class="info-panel">
+                    <div class="contador-minas">
+                        <span>Minas: </span>
+                        <span id="contador-minas">10</span>
+                    </div>
+                    <button id="btn-reiniciar" class="btn-cara">😊</button>
+                    <div class="temporizador">
+                        <span>Tiempo: </span>
+                        <span id="tiempo-juego">000</span>
+                    </div>
+                </div>
+                <div id="tablero" class="tablero"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/inicializacion-main.js"></script>
+    <script src="scripts/logica-juego.js"></script>
+    <script src="scripts/sistema-ranking.js"></script>
+</body>
+</html>
