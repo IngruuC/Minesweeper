@@ -181,3 +181,33 @@ function procesarEnvioFormulario(nombre, email, mensaje) {
     // Limpiar formulario
     limpiarFormulario();
 }
+function mostrarMensajeExito() {
+    // Crear modal de éxito temporal
+    var modalExito = document.createElement('div');
+    modalExito.className = 'modal';
+    modalExito.innerHTML = 
+        '<div class="modal-contenido">' +
+            '<h2>¡Mensaje Enviado!</h2>' +
+            '<p>Se abrirá tu cliente de correo predeterminado.</p>' +
+            '<p>Gracias por contactarnos.</p>' +
+            '<div class="modal-botones">' +
+                '<button onclick="this.parentElement.parentElement.parentElement.remove()">Cerrar</button>' +
+            '</div>' +
+        '</div>';
+    
+    document.body.appendChild(modalExito);
+    
+    // Remover modal automáticamente después de 5 segundos
+    setTimeout(function() {
+        if (modalExito.parentNode) {
+            modalExito.parentNode.removeChild(modalExito);
+        }
+    }, 5000);
+}
+
+function limpiarFormulario() {
+    nombreContacto.value = '';
+    emailContacto.value = '';
+    mensajeContacto.value = '';
+    limpiarTodosLosErrores();
+}
