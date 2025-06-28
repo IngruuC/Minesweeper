@@ -128,3 +128,22 @@ function validarConfiguracion() {
     }
     return true;
 }
+// Funciones de UI
+function mostrarModalNombre() {
+    if (modalNombre) {
+        modalNombre.classList.remove('oculto');
+        inputNombre.focus();
+    }
+}
+
+function actualizarTiempo(segundos) {
+    if (tiempoJuego) {
+        tiempoJuego.textContent = segundos.toString().padStart(3, '0');
+    }
+}
+
+function actualizarContadorMinas() {
+    if (contadorMinas) {
+        contadorMinas.textContent = minasRestantes;
+    }
+}
