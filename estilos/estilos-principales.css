@@ -629,3 +629,14 @@ body.modo-oscuro .entrada-ranking:nth-child(odd) {
        min-height: 40px;
    }
 }
+/* Animaciones adicionales */
+@keyframes pulso {
+   0% { transform: scale(1); }
+   50% { transform: scale(1.05); }
+   100% { transform: scale(1); }
+}
+
+.btn-cara:active {
+   animation: pulso 0.2s ease-in-out;
+}
+
