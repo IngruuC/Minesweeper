@@ -50,3 +50,17 @@ function configurarEventosContacto() {
         }
     });
 }
+// Funciones de validación
+function validarNombreContacto(nombre) {
+    var regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]+$/;
+    return regex.test(nombre) && nombre.trim().length > 0;
+}
+
+function validarEmail(email) {
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function validarMensaje(mensaje) {
+    return mensaje.trim().length > 5;
+}
