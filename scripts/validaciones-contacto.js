@@ -211,3 +211,21 @@ function limpiarFormulario() {
     mensajeContacto.value = '';
     limpiarTodosLosErrores();
 }
+// Funciones adicionales para mejorar la experiencia del usuario
+function contarCaracteres(textarea, contador) {
+    if (contador) {
+        contador.textContent = textarea.value.length;
+    }
+}
+
+function limitarCaracteres(elemento, limite) {
+    if (elemento.value.length > limite) {
+        elemento.value = elemento.value.substring(0, limite);
+    }
+}
+
+// Función para validar formato de teléfono 
+function validarTelefono(telefono) {
+    var regex = /^[\+]?[0-9\s\-\(\)]{7,15}$/;
+    return regex.test(telefono);
+}
