@@ -197,3 +197,23 @@ function revelarCelda(fila, columna) {
     
     verificarVictoria();
 }
+function alternarBandera(fila, columna) {
+    var celda = tableroVisible[fila][columna];
+    var elementoCelda = obtenerElementoCelda(fila, columna);
+    
+    if (celda.tieneBandera) {
+        celda.tieneBandera = false;
+        elementoCelda.classList.remove('bandera');
+        minasRestantes++;
+    } else {
+        celda.tieneBandera = true;
+        elementoCelda.classList.add('bandera');
+        minasRestantes--;
+    }
+    
+    actualizarContadorMinas();
+}
+
+function obtenerElementoCelda(fila, columna) {
+    return document.querySelector('[data-fila="' + fila + '"][data-columna="' + columna + '"]');
+}
