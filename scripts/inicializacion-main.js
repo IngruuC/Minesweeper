@@ -47,3 +47,13 @@ var listaRanking = document.getElementById('lista-ranking');
 var btnCerrarRanking = document.getElementById('btn-cerrar-ranking');
 var btnOrdenarPuntaje = document.getElementById('btn-ordenar-puntaje');
 var btnOrdenarFecha = document.getElementById('btn-ordenar-fecha');
+
+// Elementos del DOM - UI
+var btnModoOscuro = document.getElementById('btn-modo-oscuro');
+
+// Inicialización principal
+document.addEventListener('DOMContentLoaded', function() {
+    cargarModoOscuro();
+    configurarEventos();
+    mostrarModalNombre();
+});
