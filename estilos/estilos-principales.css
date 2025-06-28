@@ -703,3 +703,15 @@ textarea:focus-visible {
    outline: 2px solid var(--color-primario);
    outline-offset: 2px;
 }
+/* Print styles */
+@media print {
+   .navegacion,
+   .modal,
+   button {
+       display: none !important;
+   }
+   body {
+       background: white !important;
+       color: black !important;
+   }
+}
