@@ -153,3 +153,38 @@ function exportarRanking() {
     a.click();
     window.URL.revokeObjectURL(url);
 }
+// Funciones de estadísticas
+function obtenerEstadisticas() {
+    var partidas = obtenerPartidas();
+    if (partidas.length === 0) {
+        return null;
+    }
+    
+    var estadisticas = {
+        totalPartidas: partidas.length,
+        mejorPuntaje: Math.max.apply(Math, partidas.map(function(p) { return p.puntaje; })),
+        peorPuntaje: Math.min.apply(Math, partidas.map(function(p) { return p.puntaje; })),
+        tiempoPromedio: 0,
+        mejorTiempo: Math.min.apply(Math, partidas.map(function(p) { return p.tiempo; })),
+        peorTiempo: Math.max.apply(Math, partidas.map(function(p) { return p.tiempo; })),
+       partidasPorDificultad: {
+           facil: 0,
+           medio: 0,
+           dificil: 0
+       }
+   };
+   // Calcular tiempo promedio
+   var tiempoTotal = partidas.reduce(function(suma, partida) {
+       return suma + partida.tiempo;
+   }, 0);
+   estadisticas.tiempoPromedio = Math.round(tiempoTotal / partidas.length);
+   
+   // Contar partidas por dificultad
+   partidas.forEach(function(partida) {
+       if (estadisticas.partidasPorDificultad.hasOwnProperty(partida.dificultad)) {
+           estadisticas.partidasPorDificultad[partida.dificultad]++;
+       }
+   });
+   
+   return estadisticas;
+}
