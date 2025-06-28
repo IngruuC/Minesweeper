@@ -115,3 +115,23 @@ function validarCampoMensajeContacto() {
     
     return esValido;
 }
+// Funciones auxiliares para mostrar errores
+function mostrarError(elemento, mensaje) {
+    if (elemento) {
+        elemento.textContent = mensaje;
+        elemento.style.display = 'block';
+    }
+}
+
+function limpiarError(elemento) {
+    if (elemento) {
+        elemento.textContent = '';
+        elemento.style.display = 'none';
+    }
+}
+
+function limpiarTodosLosErrores() {
+    limpiarError(errorNombreContacto);
+    limpiarError(errorEmailContacto);
+    limpiarError(errorMensajeContacto);
+}
