@@ -149,6 +149,8 @@ function manejarClickIzquierdo(fila, columna) {
     if (tableroVisible[fila][columna].tieneBandera) return;
     if (tableroVisible[fila][columna].revelada) return;
     
+    reproducirSonidoClick();
+
     if (!juegoIniciado) {
         juegoIniciado = true;
         generarMinas(fila, columna);
@@ -182,7 +184,9 @@ function revelarCelda(fila, columna) {
     if (minasVecinas > 0) {
         celda.textContent = minasVecinas;
         celda.classList.add('numero-' + minasVecinas);
+        reproducirSonidoReveal(minasVecinas);
     } else {
+        reproducirSonidoBarrido();
         // Expansión automática recursiva
         for (var i = fila - 1; i <= fila + 1; i++) {
             for (var j = columna - 1; j <= columna + 1; j++) {
@@ -200,6 +204,8 @@ function revelarCelda(fila, columna) {
 function alternarBandera(fila, columna) {
     var celda = tableroVisible[fila][columna];
     var elementoCelda = obtenerElementoCelda(fila, columna);
+
+    reproducirSonidoBandera();
     
     if (celda.tieneBandera) {
         celda.tieneBandera = false;
@@ -220,6 +226,8 @@ function obtenerElementoCelda(fila, columna) {
 function perderJuego() {
     juegoTerminado = true;
     btnReiniciar.textContent = '😵';
+
+    reproducirSonidoExplosion();
     
     if (temporizador) {
         clearInterval(temporizador);
@@ -260,6 +268,8 @@ function verificarVictoria() {
 function ganarJuego() {
     juegoTerminado = true;
     btnReiniciar.textContent = '😎';
+
+    reproducirSonidoVictoria();
     
     if (temporizador) {
         clearInterval(temporizador);
