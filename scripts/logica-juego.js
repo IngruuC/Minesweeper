@@ -72,3 +72,29 @@ function crearTableroVacio() {
         }
     }
 }
+function generarMinas(filaInicial, columnaInicial) {
+    var minasColocadas = 0;
+    
+    while (minasColocadas < totalMinas) {
+        var fila = Math.floor(Math.random() * filas);
+        var columna = Math.floor(Math.random() * columnas);
+        
+        if (!tablero[fila][columna].esMina && 
+            !(fila === filaInicial && columna === columnaInicial)) {
+            tablero[fila][columna].esMina = true;
+            minasColocadas++;
+        }
+    }
+    
+    calcularMinasVecinas();
+}
+
+function calcularMinasVecinas() {
+    for (var i = 0; i < filas; i++) {
+        for (var j = 0; j < columnas; j++) {
+            if (!tablero[i][j].esMina) {
+                tablero[i][j].minasVecinas = contarMinasVecinas(i, j);
+            }
+        }
+    }
+}
