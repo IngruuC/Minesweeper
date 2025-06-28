@@ -639,4 +639,27 @@ body.modo-oscuro .entrada-ranking:nth-child(odd) {
 .btn-cara:active {
    animation: pulso 0.2s ease-in-out;
 }
+/* Estados de carga */
+.cargando {
+   opacity: 0.6;
+   pointer-events: none;
+}
+
+.cargando::after {
+   content: '';
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 20px;
+   height: 20px;
+   margin: -10px 0 0 -10px;
+   border: 2px solid var(--color-primario);
+   border-top-color: transparent;
+   border-radius: 50%;
+   animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+   to { transform: rotate(360deg); }
+}
 
