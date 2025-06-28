@@ -303,3 +303,47 @@ function nuevaPartida() {
     modalFinJuego.classList.add('oculto');
     mostrarModalNombre();
 }
+// Funcionalidad de Chording
+function implementarChording() {
+    tableroElement.addEventListener('mousedown', function(e) {
+        if (e.buttons === 3) { // Click izquierdo + derecho simultáneo
+            e.preventDefault();
+            var fila = parseInt(e.target.dataset.fila);
+            var columna = parseInt(e.target.dataset.columna);
+            
+            if (!isNaN(fila) && !isNaN(columna)) {
+                realizarChording(fila, columna);
+            }
+        }
+    });
+}
+
+function realizarChording(fila, columna) {
+    if (!tableroVisible[fila][columna].revelada) return;
+    if (tablero[fila][columna].esMina) return;
+    
+    var minasVecinas = tablero[fila][columna].minasVecinas;
+    var banderasVecinas = 0;
+    // Contar banderas vecinas
+    for (var i = fila - 1; i <= fila + 1; i++) {
+        for (var j = columna - 1; j <= columna + 1; j++) {
+            if (i >= 0 && i < filas && j >= 0 && j < columnas) {
+                if (tableroVisible[i][j].tieneBandera) {
+                    banderasVecinas++;
+                }
+            }
+        }
+    }
+    // Si el número de banderas coincide con las minas vecinas, revelar celdas adyacentes
+    if (banderasVecinas === minasVecinas) {
+        for (var i = fila - 1; i <= fila + 1; i++) {
+            for (var j = columna - 1; j <= columna + 1; j++) {
+                if (i >= 0 && i < filas && j >= 0 && j < columnas) {
+                    if (!tableroVisible[i][j].revelada && !tableroVisible[i][j].tieneBandera) {
+                        revelarCelda(i, j);
+                    }
+                }
+            }
+        }
+    }
+}
