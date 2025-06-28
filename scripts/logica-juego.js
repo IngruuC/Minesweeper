@@ -275,3 +275,15 @@ function ganarJuego() {
             '¡Ganaste la partida en ' + tiempoFinal + ' segundos! Puntaje: ' + puntaje);
     }, 500);
 }
+function calcularPuntaje(tiempo) {
+    var basePuntos = totalMinas * 100;
+    var bonusTiempo = Math.max(0, 300 - tiempo) * 10;
+    var bonusDificultad = totalMinas * 5;
+    return basePuntos + bonusTiempo + bonusDificultad;
+}
+
+function mostrarModalFinJuego(titulo, mensaje) {
+    tituloFinJuego.textContent = titulo;
+    mensajeFinJuego.textContent = mensaje;
+    modalFinJuego.classList.remove('oculto');
+}
