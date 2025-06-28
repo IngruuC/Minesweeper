@@ -229,3 +229,37 @@ function validarTelefono(telefono) {
     var regex = /^[\+]?[0-9\s\-\(\)]{7,15}$/;
     return regex.test(telefono);
 }
+// Función para sanitizar entrada de texto
+function sanitizarTexto(texto) {
+    return texto.replace(/[<>]/g, '').trim();
+}
+
+// Función para validar que no hay HTML en el texto
+function contieneCodigo(texto) {
+    var regex = /<[^>]*>/;
+    return regex.test(texto);
+}
+
+// Validación avanzada de seguridad
+function validarSeguridadFormulario(nombre, email, mensaje) {
+    var errores = [];
+    
+    if (contieneCodigo(nombre)) {
+        errores.push('El nombre no puede contener código HTML');
+    }
+    
+    if (contieneCodigo(mensaje)) {
+        errores.push('El mensaje no puede contener código HTML');
+    }
+    
+    // Verificar longitud máxima
+    if (nombre.length > 100) {
+        errores.push('El nombre es demasiado largo');
+    }
+    
+    if (mensaje.length > 1000) {
+        errores.push('El mensaje es demasiado largo');
+    }
+    
+    return errores;
+}
