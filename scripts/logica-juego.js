@@ -98,3 +98,49 @@ function calcularMinasVecinas() {
         }
     }
 }
+function contarMinasVecinas(fila, columna) {
+    var contador = 0;
+    
+    for (var i = fila - 1; i <= fila + 1; i++) {
+        for (var j = columna - 1; j <= columna + 1; j++) {
+            if (i >= 0 && i < filas && j >= 0 && j < columnas) {
+                if (tablero[i][j].esMina) {
+                    contador++;
+                }
+            }
+        }
+    }
+    
+    return contador;
+}
+
+function generarTableroHTML() {
+    tableroElement.innerHTML = '';
+    tableroElement.className = 'tablero tamano-' + filas;
+    
+    for (var i = 0; i < filas; i++) {
+        for (var j = 0; j < columnas; j++) {
+            var celda = document.createElement('div');
+            celda.className = 'celda';
+            celda.dataset.fila = i;
+            celda.dataset.columna = j;
+            
+            celda.addEventListener('click', function(e) {
+                var fila = parseInt(e.target.dataset.fila);
+                var columna = parseInt(e.target.dataset.columna);
+                manejarClickIzquierdo(fila, columna);
+            });
+            
+            celda.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                var fila = parseInt(e.target.dataset.fila);
+                var columna = parseInt(e.target.dataset.columna);
+                manejarClickDerecho(fila, columna);
+            });
+            
+            tableroElement.appendChild(celda);
+        }
+    }
+    // Implementar chording después de crear el tablero
+    implementarChording();
+}
