@@ -217,3 +217,26 @@ function alternarBandera(fila, columna) {
 function obtenerElementoCelda(fila, columna) {
     return document.querySelector('[data-fila="' + fila + '"][data-columna="' + columna + '"]');
 }
+function perderJuego() {
+    juegoTerminado = true;
+    btnReiniciar.textContent = '😵';
+    
+    if (temporizador) {
+        clearInterval(temporizador);
+    }
+    
+    // Revelar todas las minas
+    for (var i = 0; i < filas; i++) {
+        for (var j = 0; j < columnas; j++) {
+            if (tablero[i][j].esMina) {
+                var celda = obtenerElementoCelda(i, j);
+                celda.classList.add('mina');
+                celda.textContent = '💣';
+            }
+        }
+    }
+    
+    setTimeout(function() {
+        mostrarModalFinJuego('¡Perdiste!', 'Encontraste una mina. ¡Inténtalo de nuevo!');
+    }, 1000);
+}
