@@ -164,3 +164,36 @@ function manejarClickDerecho(fila, columna) {
     
     alternarBandera(fila, columna);
 }
+function revelarCelda(fila, columna) {
+    if (tableroVisible[fila][columna].revelada) return;
+    if (tableroVisible[fila][columna].tieneBandera) return;
+    
+    tableroVisible[fila][columna].revelada = true;
+    
+    var celda = obtenerElementoCelda(fila, columna);
+    celda.classList.add('revelada');
+    
+    if (tablero[fila][columna].esMina) {
+        perderJuego();
+        return;
+    }
+    
+    var minasVecinas = tablero[fila][columna].minasVecinas;
+    if (minasVecinas > 0) {
+        celda.textContent = minasVecinas;
+        celda.classList.add('numero-' + minasVecinas);
+    } else {
+        // Expansión automática recursiva
+        for (var i = fila - 1; i <= fila + 1; i++) {
+            for (var j = columna - 1; j <= columna + 1; j++) {
+                if (i >= 0 && i < filas && j >= 0 && j < columnas) {
+                    if (!tableroVisible[i][j].revelada) {
+                        revelarCelda(i, j);
+                    }
+                }
+            }
+        }
+    }
+    
+    verificarVictoria();
+}
