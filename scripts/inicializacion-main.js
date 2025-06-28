@@ -20,3 +20,15 @@ var dificultades = {
     medio: { filas: 12, columnas: 12, minas: 25 },
     dificil: { filas: 16, columnas: 16, minas: 40 }
 };
+
+
+// Elementos del DOM - Juego
+var modalNombre = document.getElementById('modal-nombre');
+var inputNombre = document.getElementById('input-nombre');
+var btnComenzar = document.getElementById('btn-comenzar');
+var errorNombre = document.getElementById('error-nombre');
+var tableroElement = document.getElementById('tablero');
+var contadorMinas = document.getElementById('contador-minas');
+var tiempoJuego = document.getElementById('tiempo-juego');
+var btnReiniciar = document.getElementById('btn-reiniciar');
+var selectDificultad = document.getElementById('select-dificultad');
