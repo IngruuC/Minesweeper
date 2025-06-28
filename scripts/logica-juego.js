@@ -287,3 +287,19 @@ function mostrarModalFinJuego(titulo, mensaje) {
     mensajeFinJuego.textContent = mensaje;
     modalFinJuego.classList.remove('oculto');
 }
+function iniciarTemporizador() {
+    tiempoInicio = Date.now();
+    temporizador = setInterval(function() {
+        var tiempoTranscurrido = Math.floor((Date.now() - tiempoInicio) / 1000);
+        actualizarTiempo(tiempoTranscurrido);
+    }, 1000);
+}
+
+function reiniciarJuego() {
+    configurarTablero();
+}
+
+function nuevaPartida() {
+    modalFinJuego.classList.add('oculto');
+    mostrarModalNombre();
+}
