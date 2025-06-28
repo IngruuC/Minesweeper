@@ -237,3 +237,18 @@ function reproducirSonidoBarrido() {
 function reproducirSonidoTick() {
     sistemaAudio.reproducirTick();
 }
+// Configuración de sonidos
+function alternarSonidos() {
+    return sistemaAudio.alternarSonidos();
+}
+
+function cambiarVolumenJuego(volumen) {
+    sistemaAudio.cambiarVolumen(volumen);
+}
+
+function obtenerEstadoSonidos() {
+    return {
+        habilitados: sistemaAudio.sonidosHabilitados,
+        volumen: sistemaAudio.volumen
+    };
+}
