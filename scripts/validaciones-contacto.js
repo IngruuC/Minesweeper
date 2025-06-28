@@ -8,3 +8,45 @@ var mensajeContacto = document.getElementById('mensaje-contacto');
 var errorNombreContacto = document.getElementById('error-nombre-contacto');
 var errorEmailContacto = document.getElementById('error-email-contacto');
 var errorMensajeContacto = document.getElementById('error-mensaje-contacto');
+
+// Inicialización del formulario de contacto
+document.addEventListener('DOMContentLoaded', function() {
+    if (formularioContacto) {
+        configurarEventosContacto();
+    }
+});
+
+function configurarEventosContacto() {
+    formularioContacto.addEventListener('submit', enviarFormularioContacto);
+    
+    // Validación en tiempo real
+    nombreContacto.addEventListener('blur', function() {
+        validarCampoNombreContacto();
+    });
+    
+    emailContacto.addEventListener('blur', function() {
+        validarCampoEmailContacto();
+    });
+    
+    mensajeContacto.addEventListener('blur', function() {
+        validarCampoMensajeContacto();
+    });
+    // Limpiar errores al escribir
+    nombreContacto.addEventListener('input', function() {
+        if (errorNombreContacto.textContent) {
+            errorNombreContacto.textContent = '';
+        }
+    });
+    
+    emailContacto.addEventListener('input', function() {
+        if (errorEmailContacto.textContent) {
+            errorEmailContacto.textContent = '';
+        }
+    });
+    
+    mensajeContacto.addEventListener('input', function() {
+        if (errorMensajeContacto.textContent) {
+            errorMensajeContacto.textContent = '';
+        }
+    });
+}
