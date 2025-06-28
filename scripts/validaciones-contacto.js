@@ -135,3 +135,49 @@ function limpiarTodosLosErrores() {
     limpiarError(errorEmailContacto);
     limpiarError(errorMensajeContacto);
 }
+// Función principal del formulario
+function enviarFormularioContacto(e) {
+    e.preventDefault();
+    
+    var nombre = nombreContacto.value.trim();
+    var email = emailContacto.value.trim();
+    var mensaje = mensajeContacto.value.trim();
+    
+    // Validar todos los campos
+    var nombreValido = validarCampoNombreContacto();
+    var emailValido = validarCampoEmailContacto();
+    var mensajeValido = validarCampoMensajeContacto();
+    
+    // Si todos los campos son válidos, proceder con el envío
+    if (nombreValido && emailValido && mensajeValido) {
+        procesarEnvioFormulario(nombre, email, mensaje);
+    } else {
+        // Hacer scroll al primer error
+        var primerError = document.querySelector('.error-mensaje:not(:empty)');
+        if (primerError) {
+            primerError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+}
+
+function procesarEnvioFormulario(nombre, email, mensaje) {
+    // Crear el enlace mailto
+    var asunto = 'Contacto desde Minesweeper - ' + nombre;
+    var cuerpoMensaje = 'Nombre: ' + nombre + '\n' +
+                       'Email: ' + email + '\n\n' +
+                       'Mensaje:\n' + mensaje + '\n\n' +
+                       '---\n' +
+                       'Enviado desde el juego Minesweeper';
+    
+    var mailtoLink = 'mailto:?subject=' + encodeURIComponent(asunto) + 
+                    '&body=' + encodeURIComponent(cuerpoMensaje);
+    
+    // Abrir cliente de correo
+    window.open(mailtoLink);
+    
+    // Mostrar mensaje de confirmación
+    mostrarMensajeExito();
+    
+    // Limpiar formulario
+    limpiarFormulario();
+}
