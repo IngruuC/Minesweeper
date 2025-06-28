@@ -108,3 +108,23 @@ function cargarModoOscuro() {
         btnModoOscuro.textContent = '☀️';
     }
 }
+// Funciones de validación
+function validarNombre(nombre) {
+    if (nombre.length < 3) {
+        return 'El nombre debe tener al menos 3 caracteres';
+    }
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) {
+        return 'El nombre solo puede contener letras y espacios';
+    }
+    return '';
+}
+
+function validarConfiguracion() {
+    var totalCeldas = filas * columnas;
+    if (totalMinas >= totalCeldas) {
+        alert('Error: No se pueden colocar ' + totalMinas + ' minas en un tablero de ' + 
+              totalCeldas + ' celdas.');
+        return false;
+    }
+    return true;
+}
