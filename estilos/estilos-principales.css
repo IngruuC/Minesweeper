@@ -440,3 +440,80 @@ button:disabled {
 .btn-enviar:hover {
     background-color: #219a52;
 }
+
+/* Sistema de ranking */
+.ranking-controles {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ranking-controles button {
+    background-color: #95a5a6;
+    padding: 0.5rem 1rem;
+}
+
+.ranking-controles button.activo {
+    background-color: var(--color-primario);
+}
+
+.ranking-controles button:hover {
+    background-color: #7f8c8d;
+}
+
+.ranking-controles button.activo:hover {
+    background-color: #2980b9;
+}
+
+.lista-ranking {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.entrada-ranking {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.entrada-ranking:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.entrada-ranking:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+body.modo-oscuro .entrada-ranking {
+    border-bottom-color: #555;
+}
+
+body.modo-oscuro .entrada-ranking:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.ranking-jugador {
+    flex: 1;
+    text-align: left;
+}
+
+.ranking-stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.ranking-stats span {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+    background-color: rgba(52, 152, 219, 0.1);
+    border-radius: 3px;
+}
