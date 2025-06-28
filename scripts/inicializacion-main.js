@@ -32,3 +32,11 @@ var contadorMinas = document.getElementById('contador-minas');
 var tiempoJuego = document.getElementById('tiempo-juego');
 var btnReiniciar = document.getElementById('btn-reiniciar');
 var selectDificultad = document.getElementById('select-dificultad');
+
+// Elementos del DOM - Modales
+var modalFinJuego = document.getElementById('modal-fin-juego');
+var tituloFinJuego = document.getElementById('titulo-fin-juego');
+var mensajeFinJuego = document.getElementById('mensaje-fin-juego');
+var btnNuevaPartida = document.getElementById('btn-nueva-partida');
+var btnVerRanking = document.getElementById('btn-ver-ranking');
+var btnVerRankingJuego = document.getElementById('btn-ver-ranking-juego');
