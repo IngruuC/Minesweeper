@@ -188,3 +188,24 @@ function obtenerEstadisticas() {
    
    return estadisticas;
 }
+function mostrarEstadisticas() {
+   var stats = obtenerEstadisticas();
+   if (!stats) {
+       alert('No hay partidas registradas para mostrar estadísticas.');
+       return;
+   }
+   
+   var mensaje = 'ESTADÍSTICAS DEL JUGADOR\n\n' +
+                 'Total de partidas: ' + stats.totalPartidas + '\n' +
+                 'Mejor puntaje: ' + stats.mejorPuntaje + '\n' +
+                 'Peor puntaje: ' + stats.peorPuntaje + '\n' +
+                 'Tiempo promedio: ' + stats.tiempoPromedio + 's\n' +
+                 'Mejor tiempo: ' + stats.mejorTiempo + 's\n' +
+                 'Peor tiempo: ' + stats.peorTiempo + 's\n\n' +
+                 'PARTIDAS POR DIFICULTAD:\n' +
+                 'Fácil: ' + stats.partidasPorDificultad.facil + '\n' +
+                 'Medio: ' + stats.partidasPorDificultad.medio + '\n' +
+                 'Difícil: ' + stats.partidasPorDificultad.dificil;
+   
+   alert(mensaje);
+}
