@@ -92,3 +92,19 @@ function configurarEventos() {
         }
     });
 }
+// Funciones de modo oscuro
+function alternarModoOscuro() {
+    modoOscuro = !modoOscuro;
+    document.body.classList.toggle('modo-oscuro', modoOscuro);
+    btnModoOscuro.textContent = modoOscuro ? '☀️' : '🌙';
+    localStorage.setItem('minesweeper-modo-oscuro', modoOscuro);
+}
+
+function cargarModoOscuro() {
+    var modoGuardado = localStorage.getItem('minesweeper-modo-oscuro');
+    if (modoGuardado === 'true') {
+        modoOscuro = true;
+        document.body.classList.add('modo-oscuro');
+        btnModoOscuro.textContent = '☀️';
+    }
+}
