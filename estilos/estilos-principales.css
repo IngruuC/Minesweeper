@@ -541,3 +541,91 @@ body.modo-oscuro .entrada-ranking:nth-child(odd) {
 .mb-1 { margin-bottom: 0.5rem; }
 .mb-2 { margin-bottom: 1rem; }
 .mb-3 { margin-bottom: 1.5rem; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contenido-principal {
+        padding: 1rem;
+    }
+    .nav-contenido {
+       padding: 0 1rem;
+       flex-direction: column;
+       gap: 1rem;
+   }
+   .nav-botones {
+       flex-direction: row;
+       gap: 0.5rem;
+       flex-wrap: wrap;
+       justify-content: center;
+   }
+   .configuracion-juego {
+       flex-direction: column;
+       gap: 1rem;
+   }
+   .info-panel {
+       flex-direction: column;
+       gap: 0.5rem;
+       text-align: center;
+   }
+   .tablero.tamano-8 {
+       width: 280px;
+       height: 280px;
+   }
+   .tablero.tamano-12 {
+       width: 300px;
+       height: 300px;
+   }
+   .tablero.tamano-16 {
+       width: 320px;
+       height: 320px;
+   }
+   .modal-contenido {
+       margin: 1rem;
+       padding: 1.5rem;
+   }
+   .modal-botones {
+       flex-direction: column;
+   }
+   .ranking-stats {
+       flex-direction: column;
+       gap: 0.25rem;
+       align-items: flex-end;
+   }
+   .entrada-ranking {
+       flex-direction: column;
+       align-items: flex-start;
+       gap: 0.5rem;
+   }
+   .celda {
+       font-size: 0.8rem;
+   }
+}
+
+@media (max-width: 480px) {
+   .contenido-principal {
+       padding: 0.5rem;
+   }
+   .panel-juego {
+       padding: 1rem;
+   }
+   .tablero.tamano-8 {
+       width: 240px;
+       height: 240px;
+   }
+   .tablero.tamano-12 {
+       width: 240px;
+       height: 240px;
+   }
+   .tablero.tamano-16 {
+       width: 240px;
+       height: 240px;
+   }
+   .celda {
+       font-size: 0.7rem;
+   }
+   .btn-cara {
+       font-size: 1.5rem;
+       min-width: 40px;
+       min-height: 40px;
+   }
+}
