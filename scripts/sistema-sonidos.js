@@ -205,3 +205,35 @@ var sistemaAudio = {
         }, 200);
     }
 };
+// Funciones de integración con el juego
+function inicializarSistemaAudio() {
+    sistemaAudio.inicializar();
+}
+
+function reproducirSonidoClick() {
+    sistemaAudio.reproducirClick();
+}
+
+function reproducirSonidoBandera() {
+    sistemaAudio.reproducirBandera();
+}
+
+function reproducirSonidoReveal(numero) {
+    sistemaAudio.reproducirReveal(numero);
+}
+
+function reproducirSonidoExplosion() {
+    sistemaAudio.reproducirExplosion();
+}
+
+function reproducirSonidoVictoria() {
+    sistemaAudio.reproducirVictoria();
+}
+
+function reproducirSonidoBarrido() {
+    sistemaAudio.reproducirBarrido();
+}
+
+function reproducirSonidoTick() {
+    sistemaAudio.reproducirTick();
+}
