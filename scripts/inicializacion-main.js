@@ -13,6 +13,7 @@ var tiempoInicio = 0;
 var temporizador = null;
 var nombreJugador = '';
 var modoOscuro = false;
+var btnControlSonido = document.getElementById('btn-control-sonido');
 
 // Configuraciones de dificultad
 var dificultades = {
@@ -56,6 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
     cargarModoOscuro();
     configurarEventos();
     mostrarModalNombre();
+
+    inicializarSistemaAudio();
+    actualizarBotonSonido();
 });
 
 // Configuración de todos los eventos
@@ -78,6 +82,8 @@ function configurarEventos() {
     // Eventos de UI
     btnModoOscuro.addEventListener('click', alternarModoOscuro);
     
+    
+
     // Eventos de teclado
     inputNombre.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
@@ -91,6 +97,11 @@ function configurarEventos() {
             reiniciarJuego();
         }
     });
+
+    if (btnControlSonido) {
+        btnControlSonido.addEventListener('click', alternarControlSonido);
+        }
+
 }
 // Funciones de modo oscuro
 function alternarModoOscuro() {
@@ -145,5 +156,26 @@ function actualizarTiempo(segundos) {
 function actualizarContadorMinas() {
     if (contadorMinas) {
         contadorMinas.textContent = minasRestantes;
+    }
+}
+
+//Funciones del sistema de audio
+function alternarControlSonido() {
+    var sonidosHabilitados = alternarSonidos();
+    actualizarBotonSonido();
+    
+    // Reproducir sonido de prueba si se habilitaron
+    if (sonidosHabilitados) {
+        setTimeout(function() {
+            reproducirSonidoClick();
+        }, 100);
+    }
+}
+
+function actualizarBotonSonido() {
+    if (btnControlSonido) {
+        var estado = obtenerEstadoSonidos();
+        btnControlSonido.textContent = estado.habilitados ? '🔊' : '🔇';
+        btnControlSonido.title = estado.habilitados ? 'Desactivar sonidos' : 'Activar sonidos';
     }
 }
