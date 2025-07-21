@@ -294,14 +294,14 @@ body.modo-oscuro {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    animation: aparecer-modal 0.3s ease-in-out;
+    z-index: 9999;
+    pointer-events: all;
 }
 
 .modal.oculto {
@@ -602,34 +602,85 @@ body.modo-oscuro .entrada-ranking:nth-child(odd) {
    }
 }
 
-@media (max-width: 480px) {
-   .contenido-principal {
-       padding: 0.5rem;
-   }
-   .panel-juego {
-       padding: 1rem;
-   }
-   .tablero.tamano-8 {
-       width: 240px;
-       height: 240px;
-   }
-   .tablero.tamano-12 {
-       width: 240px;
-       height: 240px;
-   }
-   .tablero.tamano-16 {
-       width: 240px;
-       height: 240px;
-   }
-   .celda {
-       font-size: 0.7rem;
-   }
-   .btn-cara {
-       font-size: 1.5rem;
-       min-width: 40px;
-       min-height: 40px;
-   }
+@media (max-width: 600px) {
+    body, html {
+        height: 100vh;
+        overflow-y: auto;
+        background: var(--color-fondo);
+        margin: 0;
+        padding: 0;
+    }
+    .contenido-principal {
+        overflow-y: auto;
+        min-height: 100vh;
+        background: transparent;
+        margin: 0;
+        padding: 0;
+    }
+    .panel-juego {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .tablero {
+        width: auto;
+        min-width: 320px;
+        max-width: max-content;
+        margin: 0 auto 1rem auto;
+        display: grid;
+        grid-template-columns: repeat(var(--cols, 8), 40px);
+        grid-template-rows: repeat(var(--rows, 8), 40px);
+        gap: 1px;
+        border: 2px solid #999;
+        border-radius: 4px;
+        background-color: #999;
+        justify-content: center;
+    }
+    .tablero.tamano-8 {
+        grid-template-columns: repeat(8, 40px);
+        grid-template-rows: repeat(8, 40px);
+        width: 320px;
+        height: 320px;
+    }
+    .tablero.tamano-12 {
+        grid-template-columns: repeat(12, 40px);
+        grid-template-rows: repeat(12, 40px);
+        width: 480px;
+        height: 480px;
+    }
+    .tablero.tamano-16 {
+        grid-template-columns: repeat(16, 40px);
+        grid-template-rows: repeat(16, 40px);
+        width: 640px;
+        height: 640px;
+    }
+    .celda {
+        width: 40px;
+        height: 40px;
+        aspect-ratio: 1 / 1;
+        font-size: 1.1rem;
+        padding: 0;
+        box-sizing: border-box;
+        border-radius: 4px;
+        margin: 0;
+        background-color: var(--color-tablero);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .modal {
+        align-items: flex-start;
+        padding-top: 10vh;
+    }
 }
+
 /* Animaciones adicionales */
 @keyframes pulso {
    0% { transform: scale(1); }
@@ -715,4 +766,46 @@ textarea:focus-visible {
        background: white !important;
        color: black !important;
    }
+}
+
+/* Reglas del juego */
+.reglas-juego {
+    background-color: var(--color-blanco);
+    color: var(--color-texto);
+    border-radius: 8px;
+    box-shadow: var(--sombra-suave);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+    max-width: 320px;
+    min-width: 220px;
+    font-size: 1rem;
+    line-height: 1.5;
+    position: absolute;
+    left: 0;
+    top: 7rem;
+    z-index: 10;
+}
+
+.reglas-juego h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--color-primario);
+}
+
+.reglas-juego ul {
+    list-style: disc inside;
+    padding-left: 0;
+}
+
+.reglas-juego li {
+    margin-bottom: 0.7rem;
+}
+
+@media (max-width: 900px) {
+    .reglas-juego {
+        position: static;
+        margin: 1rem auto;
+        max-width: 100%;
+    }
 }
