@@ -223,24 +223,25 @@ body.modo-oscuro {
     font-size: 0.9rem;
     user-select: none;
     transition: all 0.2s ease;
+    width: 38px;
+    height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+
 }
 
 .celda:hover {
     background-color: var(--color-celda-hover);
-    transform: scale(1.02);
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.15); /* Efecto visual alternativo */
 }
 
 .celda.revelada {
     background-color: var(--color-celda-revelada);
     border: 1px solid #999;
     cursor: default;
-    transform: none;
 }
 
-.celda.revelada:hover {
-    transform: none;
-}
-
+/* Mina */
 .celda.mina {
     background-color: var(--color-mina);
     animation: explosion-mina 0.5s ease-in-out;
@@ -268,8 +269,8 @@ body.modo-oscuro {
 /* Animaciones con nomenclatura kebab-case */
 @keyframes explosion-mina {
     0% { background-color: var(--color-tablero); }
-    50% { background-color: #ff6b6b; transform: scale(1.1); }
-    100% { background-color: var(--color-mina); transform: scale(1); }
+    50% { background-color: #ff6b6b; }
+    100% { background-color: var(--color-mina); }
 }
 
 @keyframes colocar-bandera {
@@ -279,9 +280,9 @@ body.modo-oscuro {
 }
 
 @keyframes revelar-celda {
-    0% { transform: scale(1); }
-    50% { transform: scale(0.9); }
-    100% { transform: scale(1); }
+    0% { }
+    50% { }
+    100% { }
 }
 
 .celda.revelada {
