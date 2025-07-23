@@ -48,4 +48,5 @@ Carstens Ingrid, Rodriguez Diego - Universidad Abierta Interamericana (UAI)
 Materia: Desarrollo y Arquitecturas Web 2025
 
 ## Enlaces
-Github pages: https://ingruuc.github.io/Minesweeper/
+Github pages: https://ingruuc.github.io/Minesweeper/  
+[📄 Requerimientos PDF 📄](Minesweeper-Requeriments.pdf)
