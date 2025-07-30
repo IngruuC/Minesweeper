@@ -184,38 +184,32 @@ body.modo-oscuro {
 
 /* Tablero de juego */
 .tablero {
-    display: grid;
-    gap: 1px;
+    display: inline-block;
     background-color: #999;
     border: 2px solid #999;
     border-radius: 4px;
     margin: 0 auto;
     box-shadow: var(--sombra-suave);
+    padding: 1px;
+    text-align: center;
+    line-height: 0;
 }
 
 .tablero.tamano-8 {
-    grid-template-columns: repeat(8, 1fr);
-    width: 320px;
-    height: 320px;
+    width: calc(8 * 44px + 2px);
 }
 
 .tablero.tamano-12 {
-    grid-template-columns: repeat(12, 1fr);
-    width: 480px;
-    height: 480px;
+    width: calc(12 * 44px + 2px);
 }
 
 .tablero.tamano-16 {
-    grid-template-columns: repeat(16, 1fr);
-    width: 640px;
-    height: 640px;
+    width: calc(16 * 44px + 2px);
 }
 
 /* Celdas del tablero */
 .celda {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
     background-color: var(--color-tablero);
     border: 2px outset var(--color-tablero);
     cursor: pointer;
@@ -223,11 +217,30 @@ body.modo-oscuro {
     font-size: 0.9rem;
     user-select: none;
     transition: all 0.2s ease;
-    width: 38px;
-    height: 38px;
     box-sizing: border-box;
     text-align: center;
+    vertical-align: top;
+    line-height: 1;
+    margin: 1px;
+}
 
+/* Tamaños específicos para cada dificultad */
+.tablero.tamano-8 .celda {
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+}
+
+.tablero.tamano-12 .celda {
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+}
+
+.tablero.tamano-16 .celda {
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
 }
 
 .celda:hover {
@@ -569,16 +582,13 @@ body.modo-oscuro .entrada-ranking:nth-child(odd) {
        text-align: center;
    }
    .tablero.tamano-8 {
-       width: 280px;
-       height: 280px;
+       width: 330px;
    }
    .tablero.tamano-12 {
-       width: 300px;
-       height: 300px;
+       width: 330px;
    }
    .tablero.tamano-16 {
-       width: 320px;
-       height: 320px;
+       width: 360px;
    }
    .modal-contenido {
        margin: 1rem;
@@ -597,8 +607,23 @@ body.modo-oscuro .entrada-ranking:nth-child(odd) {
        align-items: flex-start;
        gap: 0.5rem;
    }
-   .celda {
-       font-size: 0.8rem;
+   .tablero.tamano-8 .celda {
+       width: 38px;
+       height: 38px;
+       line-height: 34px;
+       font-size: 0.9rem;
+   }
+   .tablero.tamano-12 .celda {
+       width: 25px;
+       height: 25px;
+       line-height: 21px;
+       font-size: 0.6rem;
+   }
+   .tablero.tamano-16 .celda {
+       width: 20px;
+       height: 20px;
+       line-height: 16px;
+       font-size: 0.5rem;
    }
 }
 
@@ -630,50 +655,57 @@ body.modo-oscuro .entrada-ranking:nth-child(odd) {
         box-shadow: none;
     }
     .tablero {
-        width: auto;
-        min-width: 320px;
-        max-width: max-content;
-        margin: 0 auto 1rem auto;
-        display: grid;
-        grid-template-columns: repeat(var(--cols, 8), 40px);
-        grid-template-rows: repeat(var(--rows, 8), 40px);
-        gap: 1px;
+        display: inline-block;
+        background-color: #999;
         border: 2px solid #999;
         border-radius: 4px;
-        background-color: #999;
-        justify-content: center;
+        margin: 0 auto 1rem auto;
+        box-shadow: var(--sombra-suave);
+        padding: 1px;
+        text-align: center;
+        line-height: 0;
+        max-width: 100%;
+        overflow-x: auto;
     }
     .tablero.tamano-8 {
-        grid-template-columns: repeat(8, 40px);
-        grid-template-rows: repeat(8, 40px);
-        width: 320px;
-        height: 320px;
+        width: 330px;
     }
     .tablero.tamano-12 {
-        grid-template-columns: repeat(12, 40px);
-        grid-template-rows: repeat(12, 40px);
-        width: 480px;
-        height: 480px;
+        width: 330px;
     }
     .tablero.tamano-16 {
-        grid-template-columns: repeat(16, 40px);
-        grid-template-rows: repeat(16, 40px);
-        width: 640px;
-        height: 640px;
+        width: 360px;
+    }
+    .tablero.tamano-8 .celda {
+        width: 38px;
+        height: 38px;
+        line-height: 34px;
+        font-size: 0.9rem;
+    }
+    .tablero.tamano-12 .celda {
+        width: 25px;
+        height: 25px;
+        line-height: 21px;
+        font-size: 0.7rem;
+    }
+    .tablero.tamano-16 .celda {
+        width: 20px;
+        height: 20px;
+        line-height: 16px;
+        font-size: 0.6rem;
     }
     .celda {
-        width: 40px;
-        height: 40px;
-        aspect-ratio: 1 / 1;
-        font-size: 1.1rem;
-        padding: 0;
-        box-sizing: border-box;
-        border-radius: 4px;
-        margin: 0;
+        display: inline-block;
         background-color: var(--color-tablero);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        border: 1px solid #999;
+        cursor: pointer;
+        font-weight: bold;
+        user-select: none;
+        transition: all 0.2s ease;
+        box-sizing: border-box;
+        text-align: center;
+        vertical-align: top;
+        margin: 1px;
     }
     .modal {
         align-items: flex-start;
