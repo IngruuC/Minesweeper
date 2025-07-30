@@ -55,14 +55,38 @@ var btnModoOscuro = document.getElementById('btn-modo-oscuro');
 // Inicialización principal
 document.addEventListener('DOMContentLoaded', function() {
     cargarModoOscuro();
-    configurarEventos();
-    mostrarModalNombre();
-
+    configurarEventosGlobales();
+    configurarEventosJuego();
     inicializarSistemaAudio();
     actualizarBotonSonido();
 });
 
-// Configuración de todos los eventos
+// Configuración de eventos globales (disponibles en todas las páginas)
+function configurarEventosGlobales() {
+    var btnModoOscuro = document.getElementById('btn-modo-oscuro');
+    var btnControlSonido = document.getElementById('btn-control-sonido');
+    
+    if (btnModoOscuro) {
+        btnModoOscuro.addEventListener('click', alternarModoOscuro);
+    }
+    
+    if (btnControlSonido) {
+        btnControlSonido.addEventListener('click', alternarControlSonido);
+    }
+}
+
+// Configuración de eventos específicos del juego
+function configurarEventosJuego() {
+    // Solo configurar si estamos en la página del juego (verificar si existe el tablero)
+    if (!document.getElementById('tablero')) {
+        return;
+    }
+
+    configurarEventos();
+    mostrarModalNombre();
+}
+
+// Configuración de todos los eventos del juego
 function configurarEventos() {
     // Eventos del juego
     btnComenzar.addEventListener('click', iniciarJuego);
@@ -78,11 +102,6 @@ function configurarEventos() {
     btnCerrarRanking.addEventListener('click', cerrarRanking);
     btnOrdenarPuntaje.addEventListener('click', function() { ordenarRanking('puntaje'); });
     btnOrdenarFecha.addEventListener('click', function() { ordenarRanking('fecha'); });
-    
-    // Eventos de UI
-    btnModoOscuro.addEventListener('click', alternarModoOscuro);
-    
-    
 
     // Eventos de teclado
     inputNombre.addEventListener('keypress', function(e) {
@@ -97,11 +116,6 @@ function configurarEventos() {
             reiniciarJuego();
         }
     });
-
-    if (btnControlSonido) {
-        btnControlSonido.addEventListener('click', alternarControlSonido);
-        }
-
 }
 // Funciones de modo oscuro
 function alternarModoOscuro() {
