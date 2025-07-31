@@ -110,6 +110,14 @@ function configurarEventos() {
         }
     });
     
+    // Evento para ocultar el mensaje de error cuando se empieza a escribir
+    inputNombre.addEventListener('input', function() {
+        if (errorNombre) {
+            errorNombre.textContent = '';
+            errorNombre.style.display = 'none';
+        }
+    });
+    
     document.addEventListener('keypress', function(e) {
         if (e.key === ' ') {
             e.preventDefault();
