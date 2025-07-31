@@ -110,20 +110,19 @@ function configurarEventos() {
         }
     });
     
-    // Evento para ocultar el mensaje de error cuando se empieza a escribir
-    inputNombre.addEventListener('input', function() {
-        if (errorNombre) {
-            errorNombre.textContent = '';
-            errorNombre.style.display = 'none';
-        }
-    });
-    
-    document.addEventListener('keypress', function(e) {
-        if (e.key === ' ') {
-            e.preventDefault();
-            reiniciarJuego();
-        }
-    });
+    // Limpiar error cuando el usuario empieza a escribir
+inputNombre.addEventListener('input', function() {
+    if (errorNombre.textContent) {
+        errorNombre.textContent = '';
+    }
+});
+
+// También limpiar error al hacer focus en el campo
+inputNombre.addEventListener('focus', function() {
+    if (errorNombre.textContent) {
+        errorNombre.textContent = '';
+    }
+});
 }
 // Funciones de modo oscuro
 function alternarModoOscuro() {
